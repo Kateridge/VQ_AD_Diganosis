@@ -16,3 +16,18 @@ This repo contains PyTorch implementation of the paper: Vector Quantized Multi-m
 ``python train_kfold.py``
 
 Detail options of the training process is in "options.py"
+
+## References
+
+If you think our research work helpful, please consider citing our original paper.
+
+````
+@inproceedings{zhang2023vector,
+  title={Vector Quantized Multi-modal Guidance for Alzheimer’s Disease Diagnosis Based on Feature Imputation},
+  author={Zhang, Yuanwang and Sun, Kaicong and Liu, Yuxiao and Ou, Zaixin and Shen, Dinggang},
+  booktitle={International Workshop on Machine Learning in Medical Imaging},
+  pages={403--412},
+  year={2023},
+  organization={Springer}
+}
+````
