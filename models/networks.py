@@ -5,7 +5,6 @@ from einops import rearrange
 from einops.layers.torch import Rearrange
 from torch.nn import AdaptiveAvgPool1d
 from models.VQ_customed import Codebook
-from models.VQ import VectorQuantize
 from models.FGAN import Classifier, Generator
 from models.minGPT import GPT, GPT_withoutTE
 import torch.nn.functional as F

@@ -62,7 +62,7 @@ def getTabularFromSeries(sub_info):
 
 
 # save data to hdf5
-# -sub_id (RID, DX, missing)
+# -sub_id (attributes: RID, DX, missing)
 # --tabular
 # --MRI
 # --FDG
@@ -82,15 +82,17 @@ with h5py.File('D:\\datasets\\ADNI_ALL\\ADNI.hdf5', 'w') as f:
 
         sub_missing = sub_info.iloc[2:7].to_list()
         print(f'processing {sub_id}')
-        # get images
+        # get T1 MRI
         if sub_missing[0]:
             MRI_np = nib.load(os.path.join(dataroot, sub_id, 'T1_brain.nii.gz')).get_fdata()
             MRI_np = transform(MRI_np[4:116, 5:141, 0:114])
             sub_hdf5_MRI = sub_group.create_dataset('MRI', dtype=np.float32, data=MRI_np)
+        # get FDG-PET
         if sub_missing[1]:
             FDG_np = nib.load(os.path.join(dataroot, sub_id, 'FDG.nii.gz')).get_fdata()
             FDG_np = transform(FDG_np[4:116, 5:141, 0:114])
             sub_hdf5_FDG = sub_group.create_dataset('FDG', dtype=np.float32, data=FDG_np)
+        # get Amyloid-PET
         if sub_missing[2]:
             Amyloid_np = nib.load(os.path.join(dataroot, sub_id, 'AV45.nii.gz')).get_fdata()
             Amyloid_np = transform(Amyloid_np[4:116, 5:141, 0:114])
@@ -99,6 +101,7 @@ with h5py.File('D:\\datasets\\ADNI_ALL\\ADNI.hdf5', 'w') as f:
             Amyloid_np = nib.load(os.path.join(dataroot, sub_id, 'FBB.nii.gz')).get_fdata()
             Amyloid_np = transform(Amyloid_np[4:116, 5:141, 0:114])
             sub_hdf5_Amyloid = sub_group.create_dataset('Amyloid', dtype=np.float32, data=Amyloid_np)
+        # get Tau-PET
         if sub_missing[4]:
             Tau_np = nib.load(os.path.join(dataroot, sub_id, 'Tau.nii.gz')).get_fdata()
             Tau_np = transform(Tau_np[44:116, 5:141, 0:114])

@@ -38,7 +38,6 @@ class Option:
         parser.add_argument('--CLS_epochs', type=int, default=20)
         parser.add_argument('--warmup_epochs', type=int, default=5)
         parser.add_argument('--weight_decay', type=float, default=0.01)
-        # parser.add_argument('--codebook_ema', type=float, default=0.95)
 
         # model parameters
         parser.add_argument('--dim', type=int, default=64)
